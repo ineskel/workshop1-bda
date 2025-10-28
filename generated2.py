@@ -9,15 +9,9 @@ from dotenv import load_dotenv
 # -----------------------------
 # 1. Setup & DB connection
 # -----------------------------
-
-from sqlalchemy.ext.asyncio import create_async_engine
-
-DATABASE_URL = "postgresql://postgres:q+rdvNZc*awb8d@@db.bjhojfezzwxyjtvkvidh.supabase.co:5432/postgres"
-engine = create_engine(
-    DATABASE_URL,
-    future=True,       # SQLAlchemy 2.x style
-    echo=False,
-)
+load_dotenv()
+DATABASE_URL = os.getenv("DATABASE_URL")
+engine = create_engine(DATABASE_URL)
 
 # -----------------------------
 # 2. Queries definitions
@@ -183,7 +177,7 @@ auto_refresh = st.sidebar.checkbox("Enable auto-refresh every 60 seconds", value
 # 4. Query execution and charts
 # -----------------------------
 def load_data(sql):
-    return pd.read_sql_query(sql, engine)
+    return pd.read_sql_query(text(sql), engine)
 
 while True:
     title = selected_query
@@ -339,10 +333,4 @@ while True:
     if not auto_refresh:
         break
     time.sleep(refresh_rate)
-
     st.rerun()
-
-
-
-
-
