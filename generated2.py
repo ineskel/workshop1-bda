@@ -9,8 +9,8 @@ from dotenv import load_dotenv
 # -----------------------------
 # 1. Setup & DB connection
 # -----------------------------
-load_dotenv()
-DATABASE_URL = os.getenv("DATABASE_URL")
+
+DATABASE_URL = st.secrets["DATABASE_URL"]
 engine = create_engine(DATABASE_URL)
 
 # -----------------------------
@@ -333,4 +333,5 @@ while True:
     if not auto_refresh:
         break
     time.sleep(refresh_rate)
+
     st.rerun()
