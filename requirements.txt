@@ -3,5 +3,6 @@ pandas
 plotly
 sqlalchemy
 python-dotenv
-asyncpg
+pg8000
+
 
