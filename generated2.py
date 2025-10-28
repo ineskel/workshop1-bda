@@ -10,8 +10,10 @@ from dotenv import load_dotenv
 # 1. Setup & DB connection
 # -----------------------------
 
-DATABASE_URL = st.secrets["DATABASE_URL"]
-engine = create_engine(DATABASE_URL)
+from sqlalchemy.ext.asyncio import create_async_engine
+
+DATABASE_URL = "postgresql+asyncpg://postgres:postgres@localhost:5432/workshop1_bda"
+engine = create_async_engine(DATABASE_URL)
 
 # -----------------------------
 # 2. Queries definitions
@@ -335,3 +337,4 @@ while True:
     time.sleep(refresh_rate)
 
     st.rerun()
+
