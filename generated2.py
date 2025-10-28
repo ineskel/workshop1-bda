@@ -179,7 +179,7 @@ auto_refresh = st.sidebar.checkbox("Enable auto-refresh every 60 seconds", value
 # 4. Query execution and charts
 # -----------------------------
 def load_data(sql):
-    return pd.read_sql_query(text(sql), engine)
+    return pd.read_sql_query(sql, engine)
 
 while True:
     title = selected_query
@@ -337,4 +337,5 @@ while True:
     time.sleep(refresh_rate)
 
     st.rerun()
+
 
