@@ -12,7 +12,7 @@ from dotenv import load_dotenv
 
 from sqlalchemy.ext.asyncio import create_async_engine
 
-DATABASE_URL = "postgresql+pg8000://postgres:postgres@localhost:5432/workshop1_bda"
+DATABASE_URL = "postgresql://postgres:q+rdvNZc*awb8d@@db.bjhojfezzwxyjtvkvidh.supabase.co:5432/postgres"
 engine = create_engine(
     DATABASE_URL,
     future=True,       # SQLAlchemy 2.x style
@@ -341,6 +341,7 @@ while True:
     time.sleep(refresh_rate)
 
     st.rerun()
+
 
 
 
